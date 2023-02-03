@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#code-in-the-arduino" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -305,10 +310,90 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Documentacion
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Documentacion
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sensors" class="md-nav__link">
+    Sensors
+  </a>
+  
+    <nav class="md-nav" aria-label="Sensors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thrust-sensor" class="md-nav__link">
+    Thrust Sensor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-sensor" class="md-nav__link">
+    Current Sensor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actuator" class="md-nav__link">
+    Actuator
+  </a>
+  
+    <nav class="md-nav" aria-label="Actuator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#motor-driver" class="md-nav__link">
+    Motor Driver
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-code-for-arduino" class="md-nav__link">
+    Complete Code for Arduino
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -396,6 +481,70 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sensors" class="md-nav__link">
+    Sensors
+  </a>
+  
+    <nav class="md-nav" aria-label="Sensors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thrust-sensor" class="md-nav__link">
+    Thrust Sensor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-sensor" class="md-nav__link">
+    Current Sensor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actuator" class="md-nav__link">
+    Actuator
+  </a>
+  
+    <nav class="md-nav" aria-label="Actuator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#motor-driver" class="md-nav__link">
+    Motor Driver
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-code-for-arduino" class="md-nav__link">
+    Complete Code for Arduino
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -410,9 +559,133 @@
                   
 
 
-  <h1>Documentacion</h1>
+<h1 id="code-in-the-arduino">Code in the Arduino</h1>
+<h2 id="sensors">Sensors</h2>
+<h3 id="thrust-sensor">Thrust Sensor</h3>
+<p>To use the strain gauge it's needed a external library, and can be found on the <a href="https://www.arduino.cc/reference/en/libraries/hx711-arduino-library/">arduino library</a>, the next code show the necesary instruction in the arduino languaje only for this sensor.</p>
+<pre><code class="language-arduino">
+#include &quot;HX711.h&quot;
+
+// HX711 Amplificador
+const int LOADCELL_DOUT_PIN = 1;
+const int LOADCELL_SCK_PIN = 5;
+HX711 scale;
+
+double p;
 
 
+//...
+void setup() {
+    Serial.begin(115200);  
+    //...
+    scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
+    scale.set_scale(417.6153340635268);
+    scale.tare();
+
+    pinMode(enA, OUTPUT);
+    pinMode(in1, OUTPUT);
+    pinMode(in2, OUTPUT);
+    //...
+}
+
+
+
+void loop() {
+
+    p=scale.get_units(30);
+    //...
+    Serial.println(p,4); 
+    //...       
+}
+
+
+</code></pre>
+<h3 id="current-sensor">Current Sensor</h3>
+<p>The next code show the necesary instruction in the arduino languaje only for this sensor.</p>
+<pre><code class="language-arduino">float sensibility=0.285;
+
+void setup() {
+  // put your setup code here, to run once:
+    Serial.begin(115200);  
+    /...
+
+    pinMode(enA, OUTPUT);
+    pinMode(in1, OUTPUT);
+    pinMode(in2, OUTPUT);
+
+}
+
+float get_corriente(int n_muestras){
+    float voltajeSensor;
+    float corriente=0;
+    for(int i=0;i&lt;n_muestras;i++){
+        voltajeSensor = analogRead(A0) * (5.00 / 1023.00);////Sensor Reading
+        corriente=corriente+(voltajeSensor - 3.8331)/Sensibilidad; //get the current
+    }
+    corriente=corriente/n_muestras;
+    return(corriente);
+}
+
+
+void loop() {
+
+
+    c=get_corriente(20);
+    //...
+    Serial.println(c,4); 
+    //...       
+}
+
+</code></pre>
+<h2 id="actuator">Actuator</h2>
+<h3 id="motor-driver">Motor Driver</h3>
+<p>The next code show the necesary instruction in the arduino languaje only for the motor driver.</p>
+<pre><code class="language-arduino">
+int enA = 2;
+int in1 = 4;
+int in2 = 3;
+
+void setup() {
+    Serial.begin(115200);  
+    //...
+
+    pinMode(enA, OUTPUT);
+    pinMode(in1, OUTPUT);
+    pinMode(in2, OUTPUT);
+
+}
+
+void speedControl(int velocidad) {
+
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, HIGH);
+  analogWrite(enA, velocidad);
+  delay(3500);
+  //...
+  analogWrite(enA,0);
+
+}
+
+
+void loop() {
+
+//...
+    double x1;
+    if (Serial.available() &gt; 0){
+        float data = Serial.parseFloat();
+        if (data&gt;0){
+            x1= int(data);
+            speedControl(x1);
+        }
+        //...
+   }
+   /...
+  }
+
+
+</code></pre>
+<h2 id="complete-code-for-arduino">Complete Code for Arduino</h2>
+<p>The complete code that contains the sensors, actuator and the serial communication enabled. you can download it <a href="../code/Test_R_Motor.ino">here</a></p>
 
 
 

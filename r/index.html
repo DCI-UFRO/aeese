@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#r-studio" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -333,10 +338,97 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          R-Studio
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         R-Studio
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions-to-optimize" class="md-nav__link">
+    Functions to optimize
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions to optimize">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thrust-current-function" class="md-nav__link">
+    Thrust current function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum-thrust-function" class="md-nav__link">
+    Maximum Thrust function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-thrust-function" class="md-nav__link">
+    Minimum Thrust function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-genetic-algorithmn" class="md-nav__link">
+    The genetic algorithmn
+  </a>
+  
+    <nav class="md-nav" aria-label="The genetic algorithmn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genetic-algorithmn-code" class="md-nav__link">
+    Genetic algorithmn code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    Storage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -396,6 +488,77 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions-to-optimize" class="md-nav__link">
+    Functions to optimize
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions to optimize">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thrust-current-function" class="md-nav__link">
+    Thrust current function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum-thrust-function" class="md-nav__link">
+    Maximum Thrust function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-thrust-function" class="md-nav__link">
+    Minimum Thrust function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-genetic-algorithmn" class="md-nav__link">
+    The genetic algorithmn
+  </a>
+  
+    <nav class="md-nav" aria-label="The genetic algorithmn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genetic-algorithmn-code" class="md-nav__link">
+    Genetic algorithmn code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    Storage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -410,9 +573,30 @@
                   
 
 
-  <h1>R-Studio</h1>
-
-
+<h1 id="r-studio">R-Studio</h1>
+<p>The code on for R Requires 2 codes to work: </p>
+<ol>
+<li>The function to optimize </li>
+<li>The Genetic algorithm</li>
+</ol>
+<h2 id="functions-to-optimize">Functions to optimize</h2>
+<h3 id="thrust-current-function">Thrust current function</h3>
+<p>This function set the PWM signal and maximize the relation between thrust and current.</p>
+<p><a href="../code/funcion_peso_corriente.R">Thrust current Code</a></p>
+<h3 id="maximum-thrust-function">Maximum Thrust function</h3>
+<p>This function set the PWM signal and determine the maximum thrust.</p>
+<p><a href="../code/funcion_peso_maximo.R">Thrust current Code</a></p>
+<h3 id="minimum-thrust-function">Minimum Thrust function</h3>
+<p>This function set the PWM signal and determine the minimum thrust greater than 0.</p>
+<p><a href="../code/funcion_peso_minimo.R">Thrust current Code</a></p>
+<h2 id="the-genetic-algorithmn">The genetic algorithmn</h2>
+<p>For this function it is required complementary function for the connection to the arduino, the storage.</p>
+<h3 id="genetic-algorithmn-code">Genetic algorithmn code</h3>
+<p><a href="../code/funcion_inicializado.R">Algorithmn for R, Initializer</a></p>
+<p><a href="../code/funcion_matris_informacion_summary_ga.R">Algorithmn for R, Data transformation </a></p>
+<p><a href="../code/Comunicacion_R_Arduino_motor.Rmd">Algorithmn for R, connection and Genetic Algorithm </a></p>
+<h3 id="storage">Storage</h3>
+<p><a href="../code/funcion_inicializado.R">Storage </a></p>
 
 
 

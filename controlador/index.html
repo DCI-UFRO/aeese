@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#controlador" class="md-skip">
+        <a href="#controller" class="md-skip">
           Skip to content
         </a>
       
@@ -269,8 +269,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sensores" class="md-nav__link">
-    Sensores
+  <a href="#sensors" class="md-nav__link">
+    Sensors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actuator" class="md-nav__link">
+    Actuator
   </a>
   
 </li>
@@ -458,8 +465,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sensores" class="md-nav__link">
-    Sensores
+  <a href="#sensors" class="md-nav__link">
+    Sensors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actuator" class="md-nav__link">
+    Actuator
   </a>
   
 </li>
@@ -479,17 +493,19 @@
                   
 
 
-<h1 id="controlador">Controlador</h1>
+<h1 id="controller">Controller</h1>
 <h2 id="arduino">Arduino</h2>
-<p>Para el experimento se requiere de un controlador arduino capaz de comunicarse eficientemente por el puerto serial. </p>
-<p>El dispositivo elegido es el arduino MKR1000.
+<p>For the experiment is required a controller capable of effective communication through serial port.
+The selected device was the arduino MKR1000.
 <img alt="mkr1000" src="../img/arduino-mkr1000-wifi-pines-soldados.jpg" /></p>
-<h2 id="sensores">Sensores</h2>
-<p>El controlador requiere de almenos 2 sensores analogos.</p>
+<h2 id="sensors">Sensors</h2>
+<p>The controller must have at least two analog pins available to connect the next sensors. </p>
 <ol>
-<li><a href="../sensores/#sensor-de-empuje">sensor de peso</a></li>
-<li><a href="../sensores/#sensor-de-corriente">sensor de corriente</a></li>
+<li><a href="../sensores/#sensor-de-empuje">Thrust sensor</a></li>
+<li><a href="../sensores/#sensor-de-corriente">Current Sensor</a></li>
 </ol>
+<h2 id="actuator">Actuator</h2>
+<p>The actuator only require a PWM pin from the controller to give power to the motor through a <a href="../actuadores/">motor driver</a>. </p>
 
 
 
