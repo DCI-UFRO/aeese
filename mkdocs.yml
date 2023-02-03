@@ -1,0 +1,22 @@
+site_name: Architecture for Enabling Embedded Systems Engineering by Components Properties Identification through Genetic Algorithms
+
+nav:
+    - Home: index.md
+    - Hardware:
+      - Controlador: controlador.md
+      - Sensores: sensores.md
+      - Actuadores: actuadores.md
+    - Algoritmo Genetico: 
+      - Documentacion: documentacion.md
+      - Matlab: matlab.md
+      - R-Studio: r.md
+    - Laboratorio: lab.md
+    - Resultados: resultados.md
+
+
+theme:
+  name: material
+  palette:
+    primary: blue grey
+  icon:
+    logo: material/desktop-classic
