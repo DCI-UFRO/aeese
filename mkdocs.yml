@@ -1,17 +1,17 @@
-site_name: Architecture for Enabling Embedded Systems Engineering by Components Properties Identification through Genetic Algorithms
+site_name: Componentizing Autonomous Underwater Vehicles by Physical-runnning Algorithms
 
 nav:
     - Home: index.md
     - Hardware:
-      - Controlador: controlador.md
-      - Sensores: sensores.md
-      - Actuadores: actuadores.md
-    - Algoritmo Genetico: 
-      - Documentacion: documentacion.md
-      - Matlab: matlab.md
+      - Controller: controlador.md
+      - Sensors: sensores.md
+      - Actuators: actuadores.md
+    - Genetic Algorithms: 
+      - Arduino Documentation: documentacion.md
+      #- Matlab: matlab.md
       - R-Studio: r.md
-    - Laboratorio: lab.md
-    - Resultados: resultados.md
+    - Laboratory: lab.md
+    - Results: resultados.md
 
 
 theme:
@@ -20,3 +20,10 @@ theme:
     primary: blue grey
   icon:
     logo: material/desktop-classic
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences

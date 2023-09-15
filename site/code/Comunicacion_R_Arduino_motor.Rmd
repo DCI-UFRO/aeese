@@ -1,0 +1,87 @@
+---
+title: "GA_arduino_Rstudio"
+output: html_document
+date: "2022-12-23"
+---
+```{r}
+library(tidyverse)
+library(serial)
+library(magrittr)
+library(plotly)
+library(GA)
+library(lubridate)
+library(data.table)
+```
+
+```{r}
+# SERIAL CONNECTION
+myArduino <-  serialConnection(
+  port = "COM8",
+  mode = "115200,n,8,1" ,
+  buffering = "none",
+  newline = TRUE,
+  eof = "",
+  translation = "cr",
+  handshake = "none",
+  buffersize = 4096
+)
+```
+
+```{r}
+# Abrir conexion y probar
+open(myArduino);
+isOpen(myArduino);
+```
+
+
+```{r}
+#Sector de pruebas
+#func_guardado("x_optimo",GA_p_c,TRUE,dtset);
+close(myArduino)
+```
+
+
+
+```{r}
+
+
+# tener encuenta que tienen que encontrarse este rmark en el mismo directorio que las funciones anteriores.
+source('funcion_guardado.R');
+source('funcion_peso_corriente.R');
+source('funcion_peso_maximo.R');
+source('funcion_peso_minimo.R');
+source('funcion_inicializado.R');
+
+```
+
+Rutina GA de peso/corriente
+```{r}
+#ALGORITMO GENETICO QUE UTILIZA LA FUNCION ANTERIOR PARA BUSCAR EL MAXIMO.
+func_inicializado();
+GA_p_c <- ga(type = "real-valued",fitness =  func_peso_corriente, lower = 0, upper = 256, popSize =7, maxiter =45 , run = 10);
+#esta funcion tiene una opcion de guardar grafico peso/corriente mediante el nombre x_optimo
+dtset <- data.frame(valorx,cg,pg,p_c);
+func_guardado("x_optimo",GA_p_c,TRUE,dtset);
+close(myArduino);
+```
+
+
+Rutina GA de peso maximo(maximo empuje)
+```{r}
+func_inicializado();
+GA_p_max <- ga(type = "real-valued",fitness =  func_peso_max, lower = 0, upper = 255, popSize = 7, maxiter = 15, run = 10);
+dtset <- data.frame(valorx,cg,pg,p_c);
+func_guardado("p_max",GA_p_max,FALSE,dtset);
+close(myArduino);
+```
+
+
+Rutina GA de minimo peso (minimo empuje)
+```{r}
+func_inicializado();
+GA_p_min<- ga(type = "real-valued",fitness =  func_peso_min, lower = 0, upper = 255, popSize = 7, maxiter =15, run = 10);
+dtset <- data.frame(valorx,cg,pg,p_c);
+func_guardado("p_min",GA_p_min,FALSE,dtset);
+close(myArduino);
+```
+

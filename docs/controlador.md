@@ -1,24 +1,25 @@
-# Controlador
+# Controller
+
+
 
 ## Arduino
 
-Para el experimento se requiere de un controlador arduino capaz de comunicarse eficientemente por el puerto serial. 
+For the experiment, a controller with efficient serial port communication capabilities was essential. The chosen device for this purpose was the Arduino MKR1000.
 
-El dispositivo elegido es el arduino MKR1000.
 ![mkr1000](./img/arduino-mkr1000-wifi-pines-soldados.jpg)
 
 
-## Sensores 
+## Sensors 
 
-El controlador requiere de almenos 2 pines analogos disponibles para los siguientes sensores.
+The controller is required to have a minimum of two analog pins available for the connection of the following sensors:
 
-1. [sensor de peso](./sensores.md#sensor-de-empuje)
-2. [sensor de corriente](./sensores.md#sensor-de-corriente)
+1. [Thrust sensor](./sensores.md#sensor-de-empuje)
+2. [Current Sensor](./sensores.md#sensor-de-corriente)
 
 
-## Actuador
+## Actuator
 
-El controlador requiere de un pin digital para dar una señal PWM para impulsar un [motor]().
+The actuator necessitates only a PWM pin from the controller to supply power to the motor via a [motor driver](./actuadores.md). 
 
 
 
